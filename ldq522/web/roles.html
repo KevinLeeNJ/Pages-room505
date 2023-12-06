@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>roles</title>
+    <style>
+      nav {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        height: 2%;
+      }
+      ul {
+        position: relative;
+        display: flex;
+      }
+      ul li {
+        list-style: none;
+        width: 120px;
+        line-height: 40px;
+        text-align: center;
+      }
+      ul li a {
+        color: #cd95d8;
+        text-decoration: none;
+      }
+      .slider {
+        width: 100px;
+        height: 40px;
+        background-color: #cccccc;
+        border-radius: 4px;
+        position: absolute;
+        left: 407px;
+        bottom: 10px;
+        z-index: -1;
+        transition: all ease 0.45s;
+        animation: 1.7s ease-in-out waves infinite;
+      }
+      li:nth-child(1):hover ~ .slider {
+        left: 47px;
+      }
+      li:nth-child(2):hover ~ .slider {
+        left: 170px;
+      }
+      li:nth-child(3):hover ~ .slider {
+        left: 288px;
+      }
+      li:nth-child(4):hover ~ .slider {
+        left: 407px;
+      }
+      li:nth-child(5):hover ~ .slider {
+        left: 528px;
+      }
+      @keyframes waves {
+        from {
+          clip-path: polygon(
+            0% 17%,
+            9% 10%,
+            18% 4%,
+            30% 0%,
+            43% 1%,
+            49% 4%,
+            57% 7%,
+            66% 10%,
+            78% 11%,
+            89% 11%,
+            96% 9%,
+            100% 7%,
+            100% 100%,
+            0% 100%
+          );
+        }
+        50% {
+          clip-path: polygon(
+            0% 4%,
+            6% 9%,
+            13% 13%,
+            23% 15%,
+            31% 16%,
+            42% 15%,
+            49% 13%,
+            61% 10%,
+            71% 5%,
+            81% 3%,
+            90% 2%,
+            100% 5%,
+            100% 100%,
+            0% 100%
+          );
+        }
+        to {
+          clip-path: polygon(
+            0% 17%,
+            9% 10%,
+            18% 4%,
+            30% 0%,
+            43% 1%,
+            49% 4%,
+            57% 7%,
+            66% 10%,
+            78% 11%,
+            89% 11%,
+            96% 9%,
+            100% 7%,
+            100% 100%,
+            0% 100%
+          );
+        }
+      }
+      /* 底部整体样式 */
+      footer {
+        background-color: #0000000;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* 导航链接样式 */
+      .footer-nav ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .footer-nav ul li {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .footer-nav ul li a {
+        text-decoration: none;
+        color: #333;
+      }
+
+      /* 版权信息样式 */
+      .footer-info {
+        margin: 10px 0;
+      }
+
+      .footer-info p {
+        font-size: 12px;
+        color: #888;
+      }
+      /* 返回顶部按钮样式 */
+      .footer-back-to-top a {
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+      }
+
+      .footer-back-to-top a:hover {
+        text-decoration: underline;
+      }
+      body::before {
+        content: "";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        opacity: 0.7;
+        z-index: -1;
+      }
+      #id_footer {
+        height: 40px; /*设定footer高度*/
+        position: relative; /*设定footer绝对位置在底部*/
+        bottom: 0;
+        width: 100%; /*展开footer宽度*/
+        line-height: 40px;
+      }
+      .card {
+        /* 相对定位 */
+        position: relative;
+        width: 300px;
+        height: 450px;
+        margin: 20px;
+        background-color: #758a99;
+        border-radius: 20px;
+        /* 溢出隐藏 */
+        overflow: hidden;
+        /* 弹性布局 */
+        display: flex;
+        /* 元素纵向排列 */
+        flex-direction: column;
+        /* 居中 */
+        align-items: center;
+        color: #fff;
+        /* 阴影 */
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        /* 不让其被挤压 */
+        flex-shrink: 0;
+      }
+      .card .photo img {
+        width: 100%;
+        height: 100%;
+        /* 保持原有尺寸比例，裁切长边 */
+        object-fit: cover;
+      }
+      /* 默认大图 */
+      .card .photo {
+        /* 绝对定位 */
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0%;
+        overflow: hidden;
+        /* 动画过渡 */
+        transition: 0.5s;
+      }
+      /* 鼠标移入变小图 */
+      .card:hover .photo {
+        top: 30px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      }
+      /* 这里加个黑色到透明的渐变背景，可以更好的看清楚名字 */
+      .card .photo::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent 50%, #222);
+      }
+      .card h1 {
+        position: absolute;
+        top: 320px;
+        transition: 0.5s;
+      }
+      .card:hover h1 {
+        top: 140px;
+      }
+      .card h2 {
+        margin-top: 220px;
+        width: 80%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+      }
+      .card p {
+        width: 90%;
+        text-indent: 32px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        line-height: 30px;
+      }
+      .card a {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 8px 32px;
+        border-radius: 8px;
+      }
+      .card a:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .container {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .container2 {
+        width: 100%;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body
+    background="../images/OIP-C.jpg"
+    style="
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    "
+  >
+    <header>
+      <nav>
+        <img src="../images/下载.png" width="129" height="80" alt="" />
+        <ul style="font-family: 微软雅黑">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="intro.html">游戏介绍</a></li>
+          <li><a href="background.html">游戏背景</a></li>
+          <li><a href="roles.html">游戏角色</a></li>
+          <li><a href="recommend.html">相关推荐</a></li>
+          <div class="slider"></div>
+        </ul>
+      </nav>
+    </header>
+    <div class="container2">
+      <div class="container">
+        <div class="card">
+          <div class="photo"><img src="../images/朝武芳乃.webp" alt="" /></div>
+          <h1>朝武芳乃</h1>
+          <h2>神社巫女</h2>
+          <p style="font-size: 10px">
+            穗织建实神社的巫女姬，因为有地将臣把神刀折断，应父亲的要求，要与将臣缔结婚约而感到不满。
+            性格略微稳重，但也有着孩子气的一面。
+          </p>
+          <a
+            href="https://mzh.moegirl.org.cn/%E6%9C%9D%E6%AD%A6%E8%8A%B3%E4%B9%83"
+            >了解更多</a
+          >
+        </div>
+        <div class="card">
+          <div class="photo"><img src="../images/常陸茉子.webp" alt="" /></div>
+          <h1>常陆茉子</h1>
+          <h2>忍者</h2>
+          <p style="font-size: 10px">
+            为了培育成巫女姬的护卫而被养育长大的少女。
+            虽然在工作上很认真，但是性格相反的没那么稳重。
+            喜欢开玩笑、恶作剧，是很调皮的个性。
+          </p>
+          <a
+            href="https://mzh.moegirl.org.cn/%E5%B8%B8%E9%99%86%E8%8C%89%E5%AD%90"
+            >了解更多</a
+          >
+        </div>
+        <div class="card">
+          <div class="photo"><img src="../images/叢雨.webp" alt="" /></div>
+          <h1>丛雨</h1>
+          <h2>穗织的守护者</h2>
+          <p style="font-size: 10px">
+            神刀“丛雨丸”的管理者。丛雨作为献祭品成为“丛雨丸”的管理者，守护着“穗织”这片土地，认拔出刀的有地将臣为主人.
+          </p>
+          <a href="https://mzh.moegirl.org.cn/%E4%B8%9B%E9%9B%A8">了解更多</a>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card">
+          <div class="photo"><img src="../images/蕾娜.png" alt="" /></div>
+          <h1>蕾娜</h1>
+          <h2>女留学生</h2>
+          <p style="font-size: 10px">
+            国外来的女留学生,个性开朗正直，而且温柔，一直很有精神。
+            性格直率。遇到挫折也不会因此垂头丧气。总是说「越遇到挫折越要努力加油！」，十分坚强。
+          </p>
+          <a
+            href="https://mzh.moegirl.org.cn/%E8%95%BE%E5%A8%9C%C2%B7%E5%88%97%E6%94%AF%E6%95%A6%E7%91%99%E5%B0%94"
+            >了解更多</a
+          >
+        </div>
+        <div class="card">
+          <div class="photo"><img src="../images/鞍马小春.jpg" alt="" /></div>
+          <h1>鞍马小春</h1>
+          <h2>男主的表妹</h2>
+          <p style="font-size: 10px">
+            在芦花姐家的甜点店“田心屋”打工，是将臣的表妹。
+            性格温柔，体贴和人，家务也很好，算是一位全能的妹妹。
+          </p>
+          <a
+            href="https://mzh.moegirl.org.cn/%E9%9E%8D%E9%A9%AC%E5%B0%8F%E6%98%A5"
+            >了解更多</a
+          >
+        </div>
+        <div class="card">
+          <div class="photo"><img src="../images/马庭芦花.jpg" alt="" /></div>
+          <h1>马庭芦花</h1>
+          <h2>芦花姐</h2>
+          <p style="font-size: 10px">
+            与有地将臣、鞍马小春、鞍马廉太郎三人是儿时的玩伴。
+            已经毕业，正负责经营自家开的和式甜品屋，是甜点店的主人。
+          </p>
+          <a
+            href="https://mzh.moegirl.org.cn/%E9%A9%AC%E5%BA%AD%E8%8A%A6%E8%8A%B1"
+            >了解更多</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer id="id_footer">
+    <div class="footer-info">
+      <p>© 2023 Kevin Lee. All rights reserved.</p>
+    </div>
+    <div class="footer-social">
+      <ul>
+        <li>
+          <a href=""><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-back-to-top">
+      <a href="../index.html">返回主页</a>
+    </div>
+  </footer>
+</html>

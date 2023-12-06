@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>千恋*万花</title>
+    <style>
+      body::before {
+        content: "";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        opacity: 0.7;
+        z-index: -1;
+      }
+      nav {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        height: 2%;
+      }
+      ul {
+        position: relative;
+        display: flex;
+      }
+      ul li {
+        list-style: none;
+        width: 120px;
+        line-height: 40px;
+        text-align: center;
+      }
+      ul li a {
+        color: #cd95d8;
+        text-decoration: none;
+      }
+      .slider {
+        width: 100px;
+        height: 40px;
+        background-color: #cccccc;
+        border-radius: 4px;
+        position: absolute;
+        left: 47px;
+        bottom: 10px;
+        z-index: -1;
+        transition: all ease 0.45s;
+        animation: 1.7s ease-in-out waves infinite;
+      }
+      li:nth-child(1):hover ~ .slider {
+        left: 47px;
+      }
+      li:nth-child(2):hover ~ .slider {
+        left: 170px;
+      }
+      li:nth-child(3):hover ~ .slider {
+        left: 288px;
+      }
+      li:nth-child(4):hover ~ .slider {
+        left: 407px;
+      }
+      li:nth-child(5):hover ~ .slider {
+        left: 528px;
+      }
+      @keyframes waves {
+        from {
+          clip-path: polygon(
+            0% 17%,
+            9% 10%,
+            18% 4%,
+            30% 0%,
+            43% 1%,
+            49% 4%,
+            57% 7%,
+            66% 10%,
+            78% 11%,
+            89% 11%,
+            96% 9%,
+            100% 7%,
+            100% 100%,
+            0% 100%
+          );
+        }
+        50% {
+          clip-path: polygon(
+            0% 4%,
+            6% 9%,
+            13% 13%,
+            23% 15%,
+            31% 16%,
+            42% 15%,
+            49% 13%,
+            61% 10%,
+            71% 5%,
+            81% 3%,
+            90% 2%,
+            100% 5%,
+            100% 100%,
+            0% 100%
+          );
+        }
+        to {
+          clip-path: polygon(
+            0% 17%,
+            9% 10%,
+            18% 4%,
+            30% 0%,
+            43% 1%,
+            49% 4%,
+            57% 7%,
+            66% 10%,
+            78% 11%,
+            89% 11%,
+            96% 9%,
+            100% 7%,
+            100% 100%,
+            0% 100%
+          );
+        }
+      }
+      /* 底部整体样式 */
+      footer {
+        background-color: #0000000;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* 导航链接样式 */
+      .footer-nav ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .footer-nav ul li {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .footer-nav ul li a {
+        text-decoration: none;
+        color: #333;
+      }
+
+      /* 版权信息样式 */
+      .footer-info {
+        margin: 10px 0;
+      }
+
+      .footer-info p {
+        font-size: 12px;
+        color: #888;
+      }
+      /* 返回顶部按钮样式 */
+      .footer-back-to-top a {
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+      }
+
+      .footer-back-to-top a:hover {
+        text-decoration: underline;
+      }
+      .btn-79,
+      .btn-79 *,
+      .btn-79 :after,
+      .btn-79 :before,
+      .btn-79:after,
+      .btn-79:before {
+        border: 0 solid;
+        box-sizing: border-box;
+      }
+      .btn-79 {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-appearance: button;
+        background-color: #000;
+        background-image: none;
+        color: #fff;
+        cursor: pointer;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+          Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        font-size: 100%;
+        font-weight: 900;
+        line-height: 1.5;
+        margin: 0;
+        -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+        padding: 0;
+      }
+      .btn-79:disabled {
+        cursor: default;
+      }
+      .btn-79:-moz-focusring {
+        outline: auto;
+      }
+      .btn-79 svg {
+        display: block;
+        vertical-align: middle;
+      }
+      .btn-79 [hidden] {
+        display: none;
+      }
+      .btn-79 {
+        --height: 80px;
+        background: none;
+        border-radius: 999px;
+        box-sizing: border-box;
+        display: grid;
+        place-items: center;
+        height: var(--height);
+        -webkit-mask-image: none;
+        padding: 0 3rem;
+        position: relative;
+        text-transform: uppercase;
+      }
+      .btn-79 span {
+        font-weight: 900;
+        color: #6d5186;
+        font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana,
+          "sans-serif";
+        mix-blend-mode: hard-light;
+      }
+      .btn-79:before {
+        background: #cd95d8;
+        border-radius: 20px;
+        content: "";
+        height: calc(var(--height) / 1.7);
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: 0.2s;
+        width: calc(var(--height) / 1.7);
+      }
+      .btn-79:hover:before {
+        left: 0;
+        width: 100%;
+      }
+      body {
+        font-size: 16px;
+        font-family: "汉仪旗黑";
+        text-align: center;
+      }
+      .vid {
+        float: left;
+        width: 50%;
+      }
+      .container {
+        width: 100%;
+        aspect-ratio: 18/10;
+        margin: 0 auto;
+      }
+      .item {
+        position: relative;
+      }
+      .img,
+      .text {
+        width: 100%;
+        aspect-ratio: 18/10;
+        position: absolute;
+        top: 0;
+        transition: all 3s;
+      }
+      .item .img {
+        background: url(../images/2016050654631805.jpg) no-repeat;
+        background-size: cover;
+        transform: rotateY(0);
+        border: 0 solid gray;
+        box-sizing: border-box;
+      }
+      .item .text {
+        background-color: #cccccc;
+        opacity: 0.6;
+        transform: rotateY(-180deg);
+        backface-visibility: hidden;
+        padding: 10px;
+        box-sizing: border-box;
+        line-height: 20px;
+      }
+
+      .item:hover .img {
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+      }
+      .item:hover .text {
+        transform: rotateY(0);
+        backface-visibility: hidden;
+      }
+      .box {
+        width: 100%;
+        aspect-ratio: 160/9;
+        margin: 0px auto;
+      }
+
+      .box ul li {
+        width: 150px;
+        aspect-ratio: 16/9;
+        list-style-type: none;
+        float: center;
+        border: 0px solid whitesmoke;
+        padding: 0px;
+        position: relative;
+      }
+      .box ul li img {
+        width: 100%;
+        height: 100%;
+      }
+      .box ul li:hover img {
+        width: 400px;
+        height: 250px;
+        position: absolute;
+        left: 120%;
+        top: 100%;
+        transform: translate(-70%, -100%);
+        z-index: 1;
+        padding: 0px;
+        border: 2px solid black;
+      }
+      h1 {
+        align-items: center;
+        font-size: 100px;
+        margin-top: 10%;
+        margin-bottom: 5%;
+        color: #9cadc6;
+      }
+      hr {
+        margin-bottom: 5%;
+        margin-left: 20%;
+        margin-right: 20%;
+        color: #666ccf;
+      }
+      h2 {
+        align-items: center;
+        font-size: 50px;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        color: #9cadc6;
+      }
+      .arrow {
+        border: solid #8ddbcb;
+        border-width: 0 7px 7px 0;
+        display: inline-block;
+        padding: 10px;
+        margin-bottom: 10%;
+      }
+      .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <meta charset="utf-8" />
+  <title>千恋*万花</title>
+  <body
+    background="./images/OIP-C.jpg"
+    style="
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    "
+  >
+    <header>
+      <nav>
+        <img src="./images/下载.png" width="129" height="80" alt="" />
+        <ul style="font-family: 微软雅黑">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="./web/intro.html">游戏介绍</a></li>
+          <li><a href="./web/background.html">游戏背景</a></li>
+          <li><a href="./web/roles.html">游戏角色</a></li>
+          <li><a href="./web/recommend.html">相关推荐</a></li>
+          <div class="slider"></div>
+        </ul>
+      </nav>
+    </header>
+    <h1>千恋*万花</h1>
+    <hr />
+    <h2>Yuzusoft第九作</h2>
+    <p><i class="arrow down"></i></p>
+
+    <video
+      src="./images/iiilab_video.mp4"
+      width="90%"
+      controls="controls"
+    ></video>
+    <div class="box">
+      <ul>
+        <li><img src="./images/1.webp" alt="" /></li>
+        <li><img src="./images/2.png" alt="" /></li>
+        <li><img src="./images/3.webp" alt="" /></li>
+        <li><img src="./images/4.webp" alt="" /></li>
+        <li><img src="./images/5.webp" alt="" /></li>
+        <li><img src="./images/6.webp" alt="" /></li>
+        <li><img src="./images/7.png" alt="" /></li>
+        <li><img src="./images/8.webp" alt="" /></li>
+        <li><img src="./images/9.webp" alt="" /></li>
+        <li><img src="./images/10.webp" alt="" /></li>
+      </ul>
+    </div>
+    <form action="https://store.steampowered.com/app/1144400/_/">
+      <button class="btn-79" style="display: block; margin: 0 auto">
+        <span>Download</span>
+      </button>
+    </form>
+  </body>
+  <footer>
+    <div class="footer-info">
+      <p>© 2023 Kevin Lee. All rights reserved.</p>
+    </div>
+    <div class="footer-back-to-top">
+      <a href="../index.html">返回寝室主页</a>
+    </div>
+  </footer>
+</html>

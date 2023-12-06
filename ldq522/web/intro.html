@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>intro</title>
+    <script type="text/javascript">
+      window.onload = function () {
+        var box = this.document.getElementsByClassName("re")[0];
+        var lik = box.getElementsByTagName("li");
+        function fun(i, j) {
+          lik[i].style.opacity = 1;
+          lik[j].style.opacity = 0;
+          lik[i + 5].style.backgroundColor = "#ffffff";
+          lik[j + 5].style.backgroundColor = "#00000000";
+        }
+        fun(0, 1);
+        var i = 0;
+        function auto() {
+          if (++i >= 5) {
+            i = 0;
+            fun(0, 4);
+          } else fun(i, i - 1);
+        }
+        timer = this.setInterval(auto, 2000);
+        box.onmouseover = function () {
+          console.log("good");
+          clearInterval(timer);
+        };
+        box.onmouseout = function () {
+          timer = setInterval(auto, 2000);
+        };
+        var j = 0;
+        for (; j < 5; j++) {
+          lik[j + 5].ind = j;
+          lik[j + 5].onclick = function () {
+            fun(this.ind, i);
+            i = this.ind;
+          };
+        }
+      };
+    </script>
+    <style>
+      	nav {
+         display: flex;
+         justify-content: left;
+         align-items: left;
+         height: 2%;
+       }
+       ul {
+         position: relative;
+         display: flex;
+       }
+       ul li {
+         list-style: none;
+         width: 120px;
+         line-height: 40px;
+         text-align: center;
+       }
+      		 ul li a {
+         color: #CD95D8;
+         text-decoration: none;
+       }
+      		.slider {
+         width: 100px;
+         height: 40px;
+         background-color: #CCCCCC;
+         border-radius: 4px;
+         position: absolute;
+         left: 170px;
+         bottom: 10px;
+         z-index: -1;
+         transition: all ease 0.45s;
+         animation: 1.7s ease-in-out waves infinite;
+       }
+       li:nth-child(1):hover ~ .slider {
+         left: 47px;
+      		}
+       li:nth-child(2):hover ~ .slider {
+         left: 170px;
+       }
+       li:nth-child(3):hover ~ .slider {
+         left: 288px;
+       }
+       li:nth-child(4):hover ~ .slider {
+         left: 407px;
+       }
+       li:nth-child(5):hover ~ .slider {
+         left: 528px;
+       }
+      		@keyframes waves {
+         from {
+           clip-path: polygon(
+             0% 17%,
+             9% 10%,
+             18% 4%,
+             30% 0%,
+             43% 1%,
+             49% 4%,
+             57% 7%,
+             66% 10%,
+             78% 11%,
+             89% 11%,
+             96% 9%,
+             100% 7%,
+             100% 100%,
+             0% 100%
+           );
+         }
+         50% {
+           clip-path: polygon(
+             0% 4%,
+             6% 9%,
+             13% 13%,
+             23% 15%,
+             31% 16%,
+             42% 15%,
+             49% 13%,
+             61% 10%,
+             71% 5%,
+             81% 3%,
+             90% 2%,
+             100% 5%,
+             100% 100%,
+             0% 100%
+           );
+         }
+         to {
+           clip-path: polygon(
+             0% 17%,
+             9% 10%,
+             18% 4%,
+             30% 0%,
+             43% 1%,
+             49% 4%,
+             57% 7%,
+             66% 10%,
+             78% 11%,
+             89% 11%,
+             96% 9%,
+             100% 7%,
+             100% 100%,
+             0% 100%
+           );
+         }
+       }
+
+      footer {
+        background-color: #0000000;
+        padding: 20px;
+        text-align: center;
+      }
+
+
+      .footer-nav ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .footer-nav ul li {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .footer-nav ul li a {
+        text-decoration: none;
+        color: #333;
+      }
+
+
+      .footer-info {
+        margin: 10px 0;
+      }
+
+      .footer-info p {
+        font-size: 12px;
+        color: #888;
+      }
+      .footer-back-to-top a {
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+      }
+
+      .footer-back-to-top a:hover {
+        text-decoration: underline;
+      }
+      	body::before{
+      		content:"";
+      		display:block;
+      		position:fixed;
+      		top:0;
+      		left:0;
+      		width:100%;
+      		height:100%;
+      		background: linear-gradient(to right,#0f2027,#203a43,#2c5364);
+      		opacity:0.7;
+      		z-index:-1;
+      	}
+      	#max{
+        width: 600px;
+        height: 300px;
+        align-items: center;
+        margin: 5% auto;
+        margin-top: 0%;
+      }
+      .re{
+        position: relative;
+        height: 400px;
+      }
+      .re ul{
+        list-style-type:none ;
+      }
+      .re ul>li{
+        width: 100%;
+        aspect-ratio:16/9;
+        position: absolute;
+
+        transition: 1s;
+        opacity: 0;
+      }
+      .re ul>li img{
+        width: 100%;
+      	aspect-ratio:16/9;
+        border-radius: 10%;
+        border: 12px solid #fffbd6;
+      }
+      #max ol {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(5,75px);
+        grid-template-rows: auto;
+        grid-gap: 1em;gap: 1em;
+        float: right;
+        margin-top: 410px;
+        list-style: none;
+        top:0;left:0;
+      }
+      #max ol li {
+        width: 25px;
+        height: 10px;
+        font-size: 15px;
+        line-height: 20px;
+        float: left;
+        text-align: left;
+        border-radius: 2em;
+        border: 5px solid #999999;
+      }
+      	.picbox{
+      		float:left;
+      		width:50%;
+      	}
+      	.introduction
+      	{
+      		float:right;
+      		width:30%;
+      		background:linear-gradient(to right,#0f2027,#203a43,#2c5364);
+      		opacity:0.8;
+      		font-size:16px;
+      		font-family:"微软雅黑"；
+      		color:#ffffff;
+      		line-height:1.4;
+      		margin-top:15px;
+      		margin-right:30px;
+      	}
+      	#id_footer {
+          height: 40px; /*设定footer高度*/
+          position: absolute; /*设定footer绝对位置在底部*/
+          bottom: 0;
+          width: 100%; /*展开footer宽度*/
+          line-height: 40px;
+      }
+    </style>
+  </head>
+  <meta charset="utf-8" />
+  <title>intro</title>
+  <body
+    background="../images/OIP-C.jpg"
+    style="
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    "
+  >
+    <header>
+      <nav>
+        <img src="../images/下载.png" width="129" height="80" alt="" />
+        <ul style="font-family: 微软雅黑">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="intro.html">游戏介绍</a></li>
+          <li><a href="background.html">游戏背景</a></li>
+          <li><a href="roles.html">游戏角色</a></li>
+          <li><a href="recommend.html">相关推荐</a></li>
+          <div class="slider"></div>
+        </ul>
+      </nav>
+    </header>
+    <div class="picbox">
+      <div id="max">
+        <div class="re">
+          <ul>
+            <li><img src="../images/intro1.jpg" alt="" /></li>
+            <li><img src="../images/intro2.jpg" alt="" /></li>
+            <li><img src="../images/intro3.jpg" alt="" /></li>
+            <li><img src="../images/intro4.jpg" alt="" /></li>
+            <li><img src="../images/intro5.jpg" alt="" /></li>
+          </ul>
+          <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="introduction">
+      <img src="../images/senrenbanka.jpg" width="100%" alt="" />
+      <div style="color: aliceblue">
+        《千恋＊万花》是日本美少女游戏品牌Yuzusoft（柚子社）2016年制作的一款和风恋爱题材作品。本作发售后展现出了势如破竹的高人气，并获得萌系游戏大赏的年度准大奖以及Getchu美少女游戏大赏中获得综合类排名第一的殊荣，在剧本、系统、图像、音乐、影片、角色等多个奖项中也均有斩获。
+        <p></p>
+        发行日期: 2020 年 2 月 14 日
+        <p></p>
+        开发商: YUZUSOFT
+        <p></p>
+        发行商: HIKARI FIELD, NekoNyan Ltd.
+      </div>
+    </div>
+  </body>
+  <footer id="id_footer">
+    <div class="footer-info">
+      <p>© 2023 Kevin Lee. All rights reserved.</p>
+    </div>
+    <div class="footer-social">
+      <ul>
+        <li>
+          <a href=""><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-back-to-top">
+      <a href="../index.html">返回主页</a>
+    </div>
+  </footer>
+</html>
